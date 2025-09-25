@@ -12,12 +12,15 @@ public class ControlJugador : MonoBehaviour
 	
     private Rigidbody2D fisica;
     private SpriteRenderer sprite;
+    
+    private Animator animacion;
 	
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         fisica = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        animacion = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -39,6 +42,18 @@ public class ControlJugador : MonoBehaviour
         {
         	fisica.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
         }
+        
+        AnimarJugador();
+    }
+    
+    private void AnimarJugador()
+    {
+    	if(!TocarSuelo()) animacion.Play("jugadorSaltar");
+    	else if((fisica.linearVelocityX > 1 || fisica.linearVelocityX < -1) && fisica.linearVelocityY == 0)
+    		animacion.Play("jugadorCorrer");
+    	else if ((fisica.linearVelocityX < 1 || fisica.linearVelocityX > -1) && fisica.linearVelocityY == 0)
+    		animacion.Play("jugadorParado"); 
+    
     }
     
     private bool TocarSuelo()
