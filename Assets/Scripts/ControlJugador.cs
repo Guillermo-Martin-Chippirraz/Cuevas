@@ -78,7 +78,8 @@ public class ControlJugador : MonoBehaviour
     
     public void FinJuego()
     {
-    	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    	SceneManager.LoadScene("creditos");
+    	//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     public void IncrementarPuntos(int cantidad)
