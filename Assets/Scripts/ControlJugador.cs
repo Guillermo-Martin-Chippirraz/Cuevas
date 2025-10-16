@@ -55,8 +55,6 @@ public class ControlJugador : MonoBehaviour
         }
         
         AnimarJugador();
-        
-        hud.SetPowerUpTxt(GameObject.FindGameObjectsWithTag("Power Up").Length);
     }
     
     private void AnimarJugador()
