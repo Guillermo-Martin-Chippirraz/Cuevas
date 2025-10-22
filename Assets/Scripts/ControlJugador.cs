@@ -84,6 +84,7 @@ public class ControlJugador : MonoBehaviour
     {
     	puntuacion += cantidad;
     	hud.SetPuntuacionTxt(puntuacion);
+    	hud.SetPowerUpTxt(hud.GetPowerUpTxt() - 1);
     }
     
     public void QuitarVida()
