@@ -53,8 +53,12 @@ public class ControlJugador : MonoBehaviour
         {
         	fisica.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
         }
-        
+
         AnimarJugador();
+        if(hud.GetPowerUpTxt() <= 0)
+        {
+            NivelSuperado();
+        }
     }
     
     private void AnimarJugador()
@@ -78,6 +82,20 @@ public class ControlJugador : MonoBehaviour
     {
     	SceneManager.LoadScene("creditos");
     	//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NivelSuperado()
+    {
+        string nombre = SceneManager.GetActiveScene().name;
+        int nivelActual = int.Parse(nombre.Substring(5));
+        if (nivelActual != 2)
+        {
+            SceneManager.LoadScene("Nivel" + (nivelActual + 1));
+        }
+        else
+        {
+            FinJuego();
+        }
     }
     
     public void IncrementarPuntos(int cantidad)
