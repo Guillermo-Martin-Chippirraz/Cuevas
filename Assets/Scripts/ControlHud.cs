@@ -24,4 +24,9 @@ public class ControlHud : MonoBehaviour
 	{
 		PuntuacionTexto.text = "Puntuación: " + puntuacion;
 	}
+	
+	public int GetPowerUpTxt(){
+		string[] partes = PowerUpTexto.text.Split(':');
+		return int.Parse(partes[1].Trim());
+	}
 }
